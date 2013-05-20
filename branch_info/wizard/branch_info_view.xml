@@ -1,0 +1,74 @@
+<openerp>
+   <data>
+
+   <record model='ir.ui.view' id='branchinfo_form_log'>
+      <field name='name'>Special Info</field>
+      <field name='model'>branch.info</field>
+      <field name="priority">200</field>
+      <field name='arch' type='xml'>
+          <form string='branchinfo' version="7.0">
+              <field name='logs' nolabel="1" readonly="1" />
+                <footer>
+                    <button string="Back"
+                        name="back_windows" context="{'ids':id}" type="object" class="oe_highlight"  />
+                </footer>
+        </form>
+     </field>
+    </record>
+
+  <record model='ir.actions.act_window' id='branchinfo_action'>
+    <field name='name'>branch.info</field>
+    <field name='res_model'>branch.info</field>
+    <field name='view_type'>form</field>
+    <field name='view_type'>form</field>
+    <field name='view_mode'>form</field>
+    <field name='target'>inline</field>
+  </record>
+
+   <record model='ir.ui.view' id='branchinfo_tree_line'>
+      <field name='name'>Special Info</field>
+      <field name='model'>branch.info.line</field>
+      <field name='arch' type='xml'>
+              <tree string="Info" colors="red:st==True;yellow:revno==0"  >
+                   <field name='name' readonly="1"/>
+                   <field name='path' readonly="1"/>
+                   <field name='revno' readonly="1"/>
+                   <field name='revid' readonly="1"/>
+                   <field name='parent' readonly="1"/>
+                   <field name='st' invisible="1"/>
+            <button string="Show Problems"
+                name="show_ch" context="{'ids':id}" attrs="{'invisible':['|',('st','=',False),('revno','=',0)]}" type="object"  class="oe_highlight" /> 
+            <button string="Show 5 last log"
+                name="show_log" attrs="{'invisible':[('revno','=',0)]}" context="{'ids':id}"  type="object"  class="oe_highlight" /> 
+            </tree>
+     </field>
+    </record>
+
+   <record model='ir.ui.view' id='branchinfo_form'>
+      <field name='name'>Branch Info</field>
+      <field name='model'>branch.info</field>
+      <field name='arch' type='xml'>
+          <form string='Branch Info'>
+              <group col="5">
+                        <button string="Load Info"
+                            name="load" type="object"  attrs="{'invisible':[('load','=',True)]}"/>
+                  <group col="2">
+                       <field name='jose_way' invisible="1" attrs="{'invisible':[('load','=',False)]}"/>
+                       <field name='load' invisible="1" />
+                       <field name='nhomar_way' invisible="1" attrs="{'invisible':[('load','=',False)]}"/>
+                  </group>
+                  <group col="5" colspan="5">
+                      <field name='branch_info' readonly="1" nolabel="1" attrs="{'invisible':[('jose_way','=',True)]}"/>
+                      <field name='line_ids'  nolabel="1" attrs="{'invisible':[('nhomar_way','=',True)]}">
+                      </field>
+                 </group>
+              </group>
+        </form>
+     </field>
+    </record>
+
+
+<menuitem name = 'Branch Info' id='show_branch_info'  parent='base.menu_custom'  groups="base.group_no_one"/>
+<menuitem name = 'Branch Info' id='show_branch_info_wz'  parent='show_branch_info' action='branchinfo_action' />
+  </data>
+</openerp>
