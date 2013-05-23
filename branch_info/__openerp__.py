@@ -30,30 +30,29 @@
     "author": "Vauxoo",
     "category": "Tecnhical Features",
     "description": """
+This module is used to know state about your server instance,
+it show information about all branches set in your addons_path config.
 
-    This module is used to know state about your server instance,
-    it show information about all branches set in your addons_path config.
+Features:
 
-    Features:
+Add a new menu in technical information, it menu name is Branch Info, you
+need technical permisions to can see,
 
-    Add a new menu in technical information, it menu name is Branch Info, you
-    need technical permisions to can see,
+This menu call an action windows that show a button with Load Info string,
+press it to load information about your branchs set in your server
+configuration.
 
-    This menu call an action windows that show a button with Load Info string,
-    press it to load information about your branchs set in your server
-    configuration.
+This show the following info:
+    - Name Branch
+    - Absolute path branch
+    - Last reviewer branch
+    - Revno Branch
+    - Parent branch from get pull
 
-    This show the following info:
-        - Name Branch
-        - Absolute path branch
-        - Last reviewer branch
-        - Revno Branch
-        - Parent branch from get pull
-
-    This information is show in colors, and each color has a meaning witch is:
-        -Red: If there are changes without commits in the branch
-        -Yellow: If path is not a branch
-        -Black: If all is correctly in this branch
+This information is show in colors, and each color has a meaning witch is:
+    -Blue: If there are changes without commits in the branch
+    -Red: If path is not a branch
+    -Green: If all is correctly in this branch
     """,
 
     "website": "http://www.vauxoo.com/",

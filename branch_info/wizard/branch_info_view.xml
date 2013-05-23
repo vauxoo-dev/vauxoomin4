@@ -29,7 +29,7 @@
       <field name='name'>Special Info</field>
       <field name='model'>branch.info.line</field>
       <field name='arch' type='xml'>
-              <tree string="Info" colors="red:st==True;yellow:revno==0"  >
+          <tree string="Info" colors="blue:st==True;green:st==False and revno>0;red:revno==0"  >
                    <field name='name' readonly="1"/>
                    <field name='path' readonly="1"/>
                    <field name='revno' readonly="1"/>
