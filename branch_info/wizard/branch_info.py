@@ -267,9 +267,6 @@ class branch_info(osv.osv_memory):
                                    'the jose did'),
         'load': fields.boolean('Load', help='Use to verifie if you load '
                                'the info branch'),
-        'nhomar_way': fields.boolean('Nhomar way', help='Check if you want '
-                                     'see the nhomar concept '
-                                     ),
         'branch_info': fields.html('Branchs info', help='Show revno info '
                                    'by branch'),
         'line_ids': fields.one2many('branch.info.line',
