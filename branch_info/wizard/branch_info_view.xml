@@ -90,22 +90,24 @@
                            <field name='st'/>
                            <templates>
                                <t t-name="kanban-box"> 
-                                            <div class="oe_kanban_color_alert oe_branch_info" style="position: relative">
-                                   <field name='name'/>
+                                   <div 
+                                class="oe_kanban_content oe_kanban_card oe_kanban_project oe_kanban_global_click  oe_branch_info" 
+                                        style="position: relative">
+                                   <h4><field name='name'/></h4>
                                    <div t-att-title="record.path.raw_value" ><span>Path.</span></div>
                                    <field name='revno'/>
                                    <div class="oe_kanban_footer_left">
                                    <a t-att-href="record.parent.raw_value" target="_NEW">
-                                        <img src="/branch_info/static/src/img/lp.png"></img>
+                                     <img src="/branch_info/static/src/img/lp.png"></img>
                                    </a>
-            <button string="Why" icon="STOCK_DIALOG_ERROR"
-                name="show_ch" context="{'ids':id}" 
-                attrs="{'invisible':['|',('st','=',False),('revno','=',0)]}" 
-                type="object"/> 
-            <button string="Logs" icon="terp-stock_zoom"
-                name="show_log" attrs="{'invisible':[('revno','=',0)]}" 
-                context="{'ids':id}"  type="object"/> 
-                                            </div>
+                                    <button string="Why" icon="STOCK_DIALOG_ERROR"
+                                        name="show_ch" context="{'ids':id}" 
+                                        attrs="{'invisible':['|',('st','=',False),('revno','=',0)]}" 
+                                        type="object"/> 
+                                    <button string="Logs" icon="terp-stock_zoom"
+                                        name="show_log" attrs="{'invisible':[('revno','=',0)]}" 
+                                        context="{'ids':id}"  type="object"/> 
+                                    </div>
                                     </div>
                                </t>
                            </templates>
@@ -116,17 +118,18 @@
         </form>
      </field>
     </record>
-  <record model='ir.actions.act_window' id='branchinfo_action'>
-    <field name='name'>branch.info</field>
-    <field name='res_model'>branch.info</field>
-    <field name='view_type'>form</field>
-    <field name='view_id' eval="ref('branchinfo_form')"/>
-    <field name='view_mode'>form</field>
-    <field name='target'>inline</field>
-  </record>
+     <record model='ir.actions.act_window' id='branchinfo_action'>
+       <field name='name'>branch.info</field>
+       <field name='res_model'>branch.info</field>
+       <field name='view_type'>form</field>
+       <field name='view_id' eval="ref('branchinfo_form')"/>
+       <field name='view_mode'>form</field>
+       <field name='target'>inline</field>
+     </record>
 
-
-
-<menuitem name = 'Branch Info' id='show_branch_info_wz' sequence='1000' action='branchinfo_action' />
+    <menuitem name = 'Branch Info' 
+              id='show_branch_info_wz' 
+              sequence='1000' 
+              action='branchinfo_action' />
   </data>
 </openerp>
