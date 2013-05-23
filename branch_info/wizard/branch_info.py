@@ -182,7 +182,7 @@ class branch_info(osv.osv_memory):
                 revno = b.revno()
                 name = b.nick
                 parent = b.get_parent()
-                revd = b.revision_history()[-1]
+                revd = b.last_revision_info()[1]
                 st = commands.getoutput('cat /tmp/status') and True or False
                 msg = msg + '''\n
                         <tr>
