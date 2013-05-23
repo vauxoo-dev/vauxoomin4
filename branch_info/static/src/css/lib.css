@@ -1,0 +1,7 @@
+.openerp .oe_branch_info {
+    font-family: "Arial" !important;
+    font-size: 1.2em;
+    font-weight: 300 !important;
+    width: 250px;
+    margin: 20px 20px 20px 20px;
+}

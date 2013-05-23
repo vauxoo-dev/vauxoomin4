@@ -16,15 +16,6 @@
      </field>
     </record>
 
-  <record model='ir.actions.act_window' id='branchinfo_action'>
-    <field name='name'>branch.info</field>
-    <field name='res_model'>branch.info</field>
-    <field name='view_type'>form</field>
-    <field name='view_type'>form</field>
-    <field name='view_mode'>form</field>
-    <field name='target'>inline</field>
-  </record>
-
    <record model='ir.ui.view' id='branchinfo_form_line'>
       <field name='name'>Special Info</field>
       <field name='model'>branch.info.line</field>
@@ -78,23 +69,59 @@
                     <button string="Load Info"
                         name="load" type="object"  attrs="{'invisible':[('load','=',True)]}"/>
               </header>
-              <sheet>
               <group col="5">
                   <group col="2">
                        <field name='jose_way' invisible="1" attrs="{'invisible':[('load','=',False)]}"/>
                        <field name='load' invisible="1" />
                   </group>
                   <group col="5" colspan="5">
-                      <field name='line_ids' readonly="1" nolabel="1"/>
+                      <field name='line_ids' readonly="1" nolabel="1" mode="kanban">
+                       <kanban>
+                           <field name='name'/>
+                           <field name='id'/>
+                           <field name='path'/>
+                           <field name='revno'/>
+                           <field name='revid'/>
+                           <field name='parent'/>
+                           <field name='st'/>
+                           <templates>
+                               <t t-name="kanban-box"> 
+                                            <div class="oe_kanban_color_alert oe_branch_info" style="position: relative">
+                                   <field name='name'/>
+                                   <div t-att-title="record.path.raw_value" class="oe_highlight"><span>Path.</span></div>
+                                   <field name='revno'/>
+                                   <field name='revid'/>
+                                   <a t-att-href="record.parent.raw_value" target="_NEW">
+                                        <img src="/branch_info/static/src/img/lp.png"></img>
+                                   </a>
+            <button string="Why" icon="STOCK_DIALOG_ERROR"
+                name="show_ch" context="{'ids':id}" 
+                attrs="{'invisible':['|',('st','=',False),('revno','=',0)]}" 
+                type="object"/> 
+            <button string="Logs" icon="terp-stock_zoom"
+                name="show_log" attrs="{'invisible':[('revno','=',0)]}" 
+                context="{'ids':id}"  type="object"/> 
+                                            </div>
+                               </t>
+                           </templates>
+                       </kanban>
+                      </field>
                  </group>
              </group>
-             </sheet>
         </form>
      </field>
     </record>
+  <record model='ir.actions.act_window' id='branchinfo_action'>
+    <field name='name'>branch.info</field>
+    <field name='res_model'>branch.info</field>
+    <field name='view_type'>form</field>
+    <field name='view_id' eval="ref('branchinfo_form')"/>
+    <field name='view_mode'>form</field>
+    <field name='target'>inline</field>
+  </record>
 
 
-<menuitem name = 'Branch Info' id='show_branch_info'  parent='base.menu_custom'  groups="base.group_no_one"/>
-<menuitem name = 'Branch Info' id='show_branch_info_wz'  parent='show_branch_info' action='branchinfo_action' />
+
+<menuitem name = 'Branch Info' id='show_branch_info_wz' sequence='1000' action='branchinfo_action' />
   </data>
 </openerp>

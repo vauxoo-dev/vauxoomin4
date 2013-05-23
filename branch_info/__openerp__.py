@@ -60,6 +60,7 @@ This information is show in colors, and each color has a meaning witch is:
     "depends": ["base"],
     "init_xml": [],
     "demo_xml": [],
+    "css": ["static/src/css/*.css"],
     "update_xml": [
         'wizard/branch_info_view.xml',
     ],
