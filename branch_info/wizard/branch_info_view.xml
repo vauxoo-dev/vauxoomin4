@@ -25,6 +25,28 @@
     <field name='target'>inline</field>
   </record>
 
+   <record model='ir.ui.view' id='branchinfo_form_line'>
+      <field name='name'>Special Info</field>
+      <field name='model'>branch.info.line</field>
+      <field name='arch' type='xml'>
+          <form string="Info" version="7.0"> 
+                   <field name='name' readonly="1"/>
+                   <field name='path' readonly="1"/>
+                   <field name='revno' readonly="1"/>
+                   <field name='revid' readonly="1"/>
+                   <field name='parent' widget="url"/>
+                   <field name='st' invisible="1"/>
+            <button string="Why" icon="STOCK_DIALOG_ERROR"
+                name="show_ch" context="{'ids':id}" 
+                attrs="{'invisible':['|',('st','=',False),('revno','=',0)]}" 
+                type="object"/> 
+            <button string="Logs" icon="terp-stock_zoom"
+                name="show_log" attrs="{'invisible':[('revno','=',0)]}" 
+                context="{'ids':id}"  type="object"/> 
+            </form>
+     </field>
+    </record>
+
    <record model='ir.ui.view' id='branchinfo_tree_line'>
       <field name='name'>Special Info</field>
       <field name='model'>branch.info.line</field>
@@ -34,7 +56,7 @@
                    <field name='path' readonly="1"/>
                    <field name='revno' readonly="1"/>
                    <field name='revid' readonly="1"/>
-                   <field name='parent' readonly="1"/>
+                   <field name='parent' widget="url"/>
                    <field name='st' invisible="1"/>
             <button string="Why" icon="STOCK_DIALOG_ERROR"
                 name="show_ch" context="{'ids':id}" 
@@ -51,10 +73,13 @@
       <field name='name'>Branch Info</field>
       <field name='model'>branch.info</field>
       <field name='arch' type='xml'>
-          <form string='Branch Info'>
+          <form string='Branch Info' version="7.0">
+              <header>
+                    <button string="Load Info"
+                        name="load" type="object"  attrs="{'invisible':[('load','=',True)]}"/>
+              </header>
+              <sheet>
               <group col="5">
-                        <button string="Load Info"
-                            name="load" type="object"  attrs="{'invisible':[('load','=',True)]}"/>
                   <group col="2">
                        <field name='jose_way' invisible="1" attrs="{'invisible':[('load','=',False)]}"/>
                        <field name='load' invisible="1" />
@@ -62,7 +87,8 @@
                   <group col="5" colspan="5">
                       <field name='line_ids' readonly="1" nolabel="1"/>
                  </group>
-              </group>
+             </group>
+             </sheet>
         </form>
      </field>
     </record>
