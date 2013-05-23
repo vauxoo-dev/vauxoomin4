@@ -66,8 +66,12 @@
       <field name='arch' type='xml'>
           <form string='Branch Info' version="7.0">
               <header>
-                    <button string="Load Info"
-                        name="load" type="object"  attrs="{'invisible':[('load','=',True)]}"/>
+                    <button string="Load Info" class="oe_highlight"
+                        name="load" type="object"  
+                        />
+                    or
+                    <button string="Cancel" type="special" name="cancel"
+                    class="oe_link"/>
               </header>
               <group col="5">
                   <group col="2">
@@ -88,9 +92,9 @@
                                <t t-name="kanban-box"> 
                                             <div class="oe_kanban_color_alert oe_branch_info" style="position: relative">
                                    <field name='name'/>
-                                   <div t-att-title="record.path.raw_value" class="oe_highlight"><span>Path.</span></div>
+                                   <div t-att-title="record.path.raw_value" ><span>Path.</span></div>
                                    <field name='revno'/>
-                                   <field name='revid'/>
+                                   <div class="oe_kanban_footer_left">
                                    <a t-att-href="record.parent.raw_value" target="_NEW">
                                         <img src="/branch_info/static/src/img/lp.png"></img>
                                    </a>
@@ -102,6 +106,7 @@
                 name="show_log" attrs="{'invisible':[('revno','=',0)]}" 
                 context="{'ids':id}"  type="object"/> 
                                             </div>
+                                    </div>
                                </t>
                            </templates>
                        </kanban>
