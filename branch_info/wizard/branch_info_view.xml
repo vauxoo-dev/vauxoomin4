@@ -91,22 +91,23 @@
                            <templates>
                                <t t-name="kanban-box"> 
                                    <div 
-                                class="oe_kanban_content oe_kanban_card oe_kanban_project oe_kanban_global_click  oe_branch_info" 
-                                        style="position: relative">
-                                   <h4><field name='name'/></h4>
-                                   <div t-att-title="record.path.raw_value" ><span>Path.</span></div>
-                                   <field name='revno'/>
+                                class="oe_kanban_card oe_kanban_project oe_kanban_global_click  oe_branch_info">
+                                   <h1 class="oe_center"><field name='name'/></h1>
+                                   <div class="oe_center">
+                                       Revno: <field name='revno'/>
+                                   </div>
                                    <div class="oe_kanban_footer_left">
-                                   <a t-att-href="record.parent.raw_value" target="_NEW">
-                                     <img src="/branch_info/static/src/img/lp.png"></img>
-                                   </a>
-                                    <button string="Why" icon="STOCK_DIALOG_ERROR"
-                                        name="show_ch" context="{'ids':id}" 
-                                        attrs="{'invisible':['|',('st','=',False),('revno','=',0)]}" 
-                                        type="object"/> 
-                                    <button string="Logs" icon="terp-stock_zoom"
-                                        name="show_log" attrs="{'invisible':[('revno','=',0)]}" 
-                                        context="{'ids':id}"  type="object"/> 
+                                    <div class="oe_kanban_project_list">
+                                        <a t-att-href="record.parent.raw_value" target="_NEW">
+                                         <img src="/branch_info/static/src/img/lp.png"></img>
+                                        </a>
+                                        <a  name="Uncommited" 
+                                            attrs="{'invisible':['|',('st','=',False),('revno','=',0)]}" 
+                                            type="object">Uncommited</a> 
+                                        <a string="Logs" 
+                                            name="show_log" attrs="{'invisible':[('revno','=',0)]}" 
+                                            type="object">Logs</a> 
+                                     </div>
                                     </div>
                                     </div>
                                </t>
