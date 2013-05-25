@@ -79,7 +79,7 @@
                        <field name='load' invisible="1" />
                   </group>
                   <group col="5" colspan="5">
-                      <field name='line_ids' readonly="1" nolabel="1" mode="kanban">
+                      <field name='line_ids'  context="{'ids':id}" readonly="1" nolabel="1" mode="kanban">
                        <kanban>
                            <field name='name'/>
                            <field name='id'/>
@@ -88,8 +88,8 @@
                            <field name='revid'/>
                            <field name='parent'/>
                            <field name='st'/>
-                           <templates>
-                               <t t-name="kanban-box"> 
+                           <templates >
+                               <t   t-name="kanban-box"> 
                                    <div 
                                 class="oe_kanban_card oe_kanban_project oe_kanban_global_click  oe_branch_info">
                                    <h1 class="oe_center"><field name='name'/></h1>
@@ -101,7 +101,7 @@
                                         <a t-att-href="record.parent.raw_value" target="_NEW">
                                          <img src="/branch_info/static/src/img/lp.png"></img>
                                         </a>
-                                        <a  name="Uncommited" 
+                                        <a  name="show_ch" 
                                             attrs="{'invisible':['|',('st','=',False),('revno','=',0)]}" 
                                             type="object">Uncommited</a> 
                                         <a string="Logs" 
