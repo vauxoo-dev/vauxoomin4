@@ -245,6 +245,36 @@ class branch_info_line(osv.osv_memory):
         }
 
 
+    def show_modules(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        r = False
+        b = False
+        w = False
+        line_brw = ids and self.browse(cr, uid, ids[0], context=context)
+        res = {
+            'logs': '\n'.join([i for i in os.listdir(line_brw.path) if not i.startswith('.')]),
+        }
+        res_ids = self.create(cr, uid, res)
+        obj_model = self.pool.get('ir.model.data')
+        model_data_ids = obj_model.search(
+            cr, uid, [('model', '=', 'ir.ui.view'),
+                      ('name', '=', 'branchinfo_form_log')])
+        resource_id = obj_model.read(cr, uid,
+                                     model_data_ids,
+                                     fields=['res_id'])[0]['res_id']
+        return {
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'branch.info.line',
+            'views': [(resource_id, 'form')],
+            'type': 'ir.actions.act_window',
+            'target': 'inline',
+            'res_id': res_ids,
+            'context': context,
+        }
+
+
     def show_ch(self, cr, uid, ids, context=None):
         if context is None:
             context = {}

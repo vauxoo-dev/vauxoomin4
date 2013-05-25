@@ -72,6 +72,9 @@
                                         <a  string="Logs" 
                                             name="show_log" attrs="{'invisible':[('revno','=',0)]}" 
                                             type="object">Logs</a> 
+                                        <a  string="Modules" 
+                                            name="show_modules" attrs="{'invisible':[('revno','=',0)]}" 
+                                            type="object">Modules</a> 
                                      </div>
                                     </div>
                                     </div>
