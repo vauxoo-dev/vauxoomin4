@@ -41,7 +41,6 @@ class branch_info_line(osv.osv_memory):
                 'ok':5,
                 'notb':2,
                 'uncommited':7
-                
                 }
         res = {}
         for line in self.browse(cr, uid, ids, context=context):
@@ -168,7 +167,7 @@ class branch_info_line(osv.osv_memory):
             'res_model': 'branch.info.line',
             'views': [(resource_id, 'kanban')],
             'type': 'ir.actions.act_window',
-            'context': {'stop': True},
+            'context': {'hide_breadcrumb': True, 'stop': True},
         }
 
     _columns = {
@@ -211,7 +210,7 @@ class branch_info_line(osv.osv_memory):
             'res_model': 'branch.info.line',
             'views': [(resource_id, 'kanban')],
             'type': 'ir.actions.act_window',
-            'context': {'stop': True},}
+            'context': {'hide_breadcrumb': True, 'stop': True},
     def show_log(self, cr, uid, ids, context=None):
         if context is None:
             context = {}

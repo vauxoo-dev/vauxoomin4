@@ -1,7 +1,7 @@
 <openerp>
    <data>
 
-        <record id="branch_info_search" model="ir.ui.view">                                                                                                                      
+        <record id="branch_info_search" model="ir.ui.view">
             <field name="name">product.supplierinfo.su.search.form</field>         
             <field name="model">branch.info.line</field>                    
             <field name="arch" type="xml">                                      
@@ -83,6 +83,7 @@
                        </kanban>
      </field>
     </record>
+
      <record model='ir.actions.act_window' id='branchinfo_action'>
        <field name='name'>branch.info</field>
        <field name='res_model'>branch.info.line</field>
@@ -90,13 +91,14 @@
        <field name='view_id' eval="ref('branchinfo_form')"/>
         <field name="search_view_id" ref="branch_info_search"/> 
        <field name='view_mode'>form,kanban</field>
-        <field name="context">{'search_default_Current': 1}</field>   
+        <field name="context">{'hide_breadcrumb': 1, 'search_default_Current': 1}</field>   
        <field name='target'>inline</field>
      </record>
 
     <menuitem name = 'Branch Info' 
               id='show_branch_info_wz' 
               sequence='1000' 
+              groups="base.group_erp_manager"
               action='branchinfo_action' />
   </data>
 </openerp>
