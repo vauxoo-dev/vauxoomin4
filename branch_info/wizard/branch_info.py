@@ -253,7 +253,10 @@ class branch_info_line(osv.osv_memory):
         w = False
         line_brw = ids and self.browse(cr, uid, ids[0], context=context)
         res = {
-            'logs': '\n'.join([i for i in os.listdir(line_brw.path) if not i.startswith('.')]),
+            'logs': '\n'.join([i for i in os.listdir(line_brw.path)\
+                                if not i.startswith('.') and \
+                                    os.path.isdir('%s/%s' %\
+                                                         (line_brw.path, i))]),
         }
         res_ids = self.create(cr, uid, res)
         obj_model = self.pool.get('ir.model.data')

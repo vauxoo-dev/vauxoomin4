@@ -45,7 +45,7 @@
       <field name='name'>Branch Info</field>
       <field name='model'>branch.info.line</field>
       <field name='arch' type='xml'>
-          <kanban version="7.0" >
+          <kanban version="7.0" quick_create="false" create="false" >
                            <field name='name' />
                            <field name='id'/>
                            <field name='path'/>
