@@ -34,106 +34,21 @@ class branch_info_line(osv.osv_memory):
     '''Show info by branch and you can do pull from here'''
 
     _name = 'branch.info.line'
-
-    _columns = {
-        'path': fields.char('Path', 500,
-                            help='Complete branch path in server'),
-        'revid': fields.char('Revid', 500, help='Revid for this branch '),
-        'parent': fields.char('Parent', 500, help='This is the parent '
-                              'branch from get pull'),
-        'revno': fields.integer('Revno', help='Branch revno'),
-        'name': fields.char('Name', 20, help='Branch Name'),
-        'info_id': fields.many2one('branch.info', 'Branch'),
-        'st': fields.boolean('Status', help='True if this branch have diff '
-                             'without commiter'),
-    }
-
-    def show_log(self, cr, uid, ids, context=None):
+    def _get_color(self, cr, uid, ids, name, arg, context=None):
         if context is None:
             context = {}
-        r = False
-        b = False
-        w = False
-        line_brw = context.get('ids', False) and self.browse(cr, uid,
-                                                             context.get(
-                                                                 'ids'),
-                                                             context=context)
-        st = os.popen('bzr log -l 5 --show-ids --include-merged %s/'
-                      % (line_brw and
-                         line_brw.path))
-        res = {
-            'logs': ''.join(st.readlines()),
-            'change_id': line_brw.info_id.id,
-        }
-        res_ids = self.pool.get('branch.info').create(cr, uid, res)
-        obj_model = self.pool.get('ir.model.data')
-        model_data_ids = obj_model.search(
-            cr, uid, [('model', '=', 'ir.ui.view'),
-                      ('name', '=', 'branchinfo_form_log')])
-        resource_id = obj_model.read(cr, uid,
-                                     model_data_ids,
-                                     fields=['res_id'])[0]['res_id']
-        return {
-            'view_type': 'form',
-            'view_mode': 'form',
-            'res_model': 'branch.info',
-            'views': [(resource_id, 'form')],
-            'type': 'ir.actions.act_window',
-            'target': 'inline',
-            'res_id': res_ids,
-            'context': context,
-        }
-
-    def show_ch(self, cr, uid, ids, context=None):
-        if context is None:
-            context = {}
-
-        addons_path = openerp.conf.addons_paths
-        r = False
-        b = False
-        w = False
-        lines = []
-        line_brw = context.get('ids', False) and self.browse(cr, uid,
-                                                             context.get(
-                                                                 'ids'),
-                                                             context=context)
-        try:
-            r = repository.Repository.open(line_brw and line_brw.path)
-            b = branch.Branch.open(line_brw and line_brw.path)
-            w = workingtree.WorkingTree.open(line_brw and line_brw.path)
-        except:
-            pass
-        st = False
-        if r and b and w:
-            status.show_tree_status(w, to_file=open('/tmp/status', 'w'))
-            st = commands.getoutput('less /tmp/status')
-            commands.getoutput('rm /tmp/status')
-        res = {
-            'logs': st,
-            'change_id': line_brw.info_id.id,
-        }
-        res_ids = self.pool.get('branch.info').create(cr, uid, res)
-        obj_model = self.pool.get('ir.model.data')
-        model_data_ids = obj_model.search(cr, uid, [(
-            'model', '=', 'ir.ui.view'), ('name', '=', 'branchinfo_form_log')])
-        resource_id = obj_model.read(
-            cr, uid, model_data_ids, fields=['res_id'])[0]['res_id']
-        return {
-            'view_type': 'form',
-            'view_mode': 'form',
-            'res_model': 'branch.info',
-            'views': [(resource_id, 'form')],
-            'type': 'ir.actions.act_window',
-            'target': 'inline',
-            'res_id': res_ids,
-            'context': context,
-        }
-
-
-class branch_info(osv.osv_memory):
-
-    '''Show revno info of all branch in your servers, loaded in openerp'''
-
+        color = {
+                'ok':5,
+                'notb':2,
+                'uncommited':7
+                
+                }
+        res = {}
+        for line in self.browse(cr, uid, ids, context=context):
+            res.update({line.id:color.get(line.st,0)})
+        
+        return res
+    
     def is_branch(self, cr, uid, ids, path, context=None):
         ''' Check if any path is a branch
             return branch path or False if not a branch'''
@@ -155,6 +70,9 @@ class branch_info(osv.osv_memory):
         if context.get('stop', False):
             return {}
         addons_path = openerp.conf.addons_paths
+        line_ids = self.search(cr, uid, [], context=context)
+        line_ids and self.unlink(cr, uid, line_ids, context=context)
+        
         msg = '''
         <table border border="1">
 
@@ -183,7 +101,8 @@ class branch_info(osv.osv_memory):
                 name = b.nick
                 parent = b.get_parent()
                 revd = b.last_revision_info()[1]
-                st = commands.getoutput('cat /tmp/status') and True or False
+                st = commands.getoutput('cat /tmp/status') and 'uncommited'\
+                                                               or 'ok'
                 msg = msg + '''\n
                         <tr>
                         <td>%s</td>
@@ -193,19 +112,18 @@ class branch_info(osv.osv_memory):
                         <td>%s</td>
                         <tr> ''' % (name, is_branch, revno, revd, parent)
 
-                lines.append((0, 0, {'name': name,
+                self.create(cr, uid, {'name': name,
                                      'revid': revd,
                                      'parent': parent,
                                      'revno': revno,
                                      'st': st,
-                                     'path': is_branch
-                                     }))
+                                     'path': is_branch}, context=context)
             else:
                 revno = 0
                 name = path.split('/')[-1]
                 parent = False
                 revd = False
-                st = False
+                st = 'notb'
                 msg = msg + '''\n
                         <tr>
                         <td>%s</td>
@@ -215,13 +133,13 @@ class branch_info(osv.osv_memory):
                         <td>%s</td>
                         <tr> ''' % (name, path, revno, revd, parent)
 
-                lines.append((0, 0, {'name': name,
+                self.create(cr, uid, {'name': name,
                                      'revid': revd,
                                      'parent': parent,
                                      'revno': revno,
                                      'st': st,
                                      'path': path
-                                     }))
+                                     })
 
         msg = msg + '''\n
                    </tr>
@@ -238,69 +156,134 @@ class branch_info(osv.osv_memory):
         except:
             pass
 
-        res_ids = self.pool.get('branch.info').create(cr, uid, res)
         obj_model = self.pool.get('ir.model.data')
         model_data_ids = obj_model.search(
             cr, uid, [('model', '=', 'ir.ui.view'),
-                      ('name', '=', 'branchinfo_form')])
+                      ('name', '=', 'branchinfo_kanban')])
         resource_id = obj_model.read(cr, uid, model_data_ids,
                                      fields=['res_id'])[0]['res_id']
         return {
             'view_type': 'form',
             'view_mode': 'form',
-            'res_model': 'branch.info',
-            'views': [(resource_id, 'form')],
+            'res_model': 'branch.info.line',
+            'views': [(resource_id, 'kanban')],
             'type': 'ir.actions.act_window',
-            'target': 'inline',
-            'res_id': res_ids,
             'context': {'stop': True},
         }
 
-    _name = 'branch.info'
-
     _columns = {
-
         'logs': fields.text('Info', help='This field will be used to show '
                             'specific info branch like log and '
                             'diff or other special info'),
-        'jose_way': fields.boolean('Jose way', help='Check if you want see '
-                                   'the jose did'),
-        'load': fields.boolean('Load', help='Use to verifie if you load '
-                               'the info branch'),
-        'branch_info': fields.html('Branchs info', help='Show revno info '
-                                   'by branch'),
-        'line_ids': fields.one2many('branch.info.line',
-                                    'info_id',
-                                    'Lines', help='Show revno by branch '
-                                    'and you can do pull by '
-                                    'line'),
-        'change_id': fields.integer('Change_id', help='Ids used to windows '
-                                    'change'),
+        'path': fields.char('Path', 500,
+                            help='Complete branch path in server'),
+        'revid': fields.char('Revid', 500, help='Revid for this branch '),
+        'parent': fields.char('Parent', 500, help='This is the parent '
+                              'branch from get pull'),
+        'revno': fields.integer('Revno', help='Branch revno'),
+        'name': fields.char('Name', 20, help='Branch Name'),
+        'st':fields.selection([('ok','Commited'),('notb','Not Branch'),
+                               ('uncommited','Uncommited')],
+                               help='True if this branch have diff '
+                             'without commiter'), 
+        'color':fields.function(_get_color, method=True,
+                                string='Color',type='integer',
+                                help='Color used in kanban view'), 
 
     }
-    _defaults = {
-        'jose_way': True,
-    }
+    
+    
 
     def back_windows(self, cr, uid, ids, context=None):
         if context is None:
             context = {}
 
-        wz_brw = context.get('ids', False) and self.browse(cr, uid,
-                                                           context.get('ids'),
-                                                           context=context)
+        self.unlink(cr, uid, ids, context=context)
+        obj_model = self.pool.get('ir.model.data')
+        model_data_ids = obj_model.search(
+            cr, uid, [('model', '=', 'ir.ui.view'),
+                      ('name', '=', 'branchinfo_kanban')])
+        resource_id = obj_model.read(cr, uid, model_data_ids,
+                                     fields=['res_id'])[0]['res_id']
+        return {
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'branch.info.line',
+            'views': [(resource_id, 'kanban')],
+            'type': 'ir.actions.act_window',
+            'context': {'stop': True},}
+    def show_log(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        r = False
+        b = False
+        w = False
+        line_brw = ids and self.browse(cr, uid, ids[0], context=context)
+        st = os.popen('bzr log -l 5 --show-ids --include-merged %s/'
+                      % (line_brw and
+                         line_brw.path))
+        res = {
+            'logs': ''.join(st.readlines()),
+        }
+        res_ids = self.create(cr, uid, res)
+        obj_model = self.pool.get('ir.model.data')
+        model_data_ids = obj_model.search(
+            cr, uid, [('model', '=', 'ir.ui.view'),
+                      ('name', '=', 'branchinfo_form_log')])
+        resource_id = obj_model.read(cr, uid,
+                                     model_data_ids,
+                                     fields=['res_id'])[0]['res_id']
+        return {
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'branch.info.line',
+            'views': [(resource_id, 'form')],
+            'type': 'ir.actions.act_window',
+            'target': 'inline',
+            'res_id': res_ids,
+            'context': context,
+        }
+
+
+    def show_ch(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+
+        addons_path = openerp.conf.addons_paths
+        r = False
+        b = False
+        w = False
+        lines = []
+        
+        line_brw = ids and self.browse(cr, uid, ids[0], context=context)
+        try:
+            r = repository.Repository.open(line_brw and line_brw.path)
+            b = branch.Branch.open(line_brw and line_brw.path)
+            w = workingtree.WorkingTree.open(line_brw and line_brw.path)
+        except:
+            pass
+        st = False
+        if r and b and w:
+            status.show_tree_status(w, to_file=open('/tmp/status', 'w'))
+            st = commands.getoutput('less /tmp/status')
+            commands.getoutput('rm /tmp/status')
+        res = {
+            'logs': st,
+        }
+        res_ids = self.create(cr, uid, res)
         obj_model = self.pool.get('ir.model.data')
         model_data_ids = obj_model.search(cr, uid, [(
-            'model', '=', 'ir.ui.view'), ('name', '=', 'branchinfo_form')])
+            'model', '=', 'ir.ui.view'), ('name', '=', 'branchinfo_form_log')])
         resource_id = obj_model.read(
             cr, uid, model_data_ids, fields=['res_id'])[0]['res_id']
         return {
             'view_type': 'form',
             'view_mode': 'form',
-            'res_model': 'branch.info',
+            'res_model': 'branch.info.line',
             'views': [(resource_id, 'form')],
             'type': 'ir.actions.act_window',
             'target': 'inline',
-            'res_id': wz_brw.change_id,
+            'res_id': res_ids,
             'context': context,
         }
+
