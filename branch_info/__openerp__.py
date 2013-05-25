@@ -30,8 +30,8 @@
     "author": "Vauxoo",
     "category": "Tecnhical Features",
     "description": """
-This module is used to know state about your server instance,
-it show information about all branches set in your addons_path config.
+This module is used to know state of your server instance,
+it shows information about all branches setted in your addons_path config.
 
 Features:
 
@@ -43,16 +43,20 @@ press it to load information about your branchs set in your server
 configuration.
 
 This show the following info:
-    - Name Branch
-    - Absolute path branch
-    - Last reviewer branch
-    - Revno Branch
-    - Parent branch from get pull
 
-This information is show in colors, and each color has a meaning witch is:
-    -Blue: If there are changes without commits in the branch
-    -Red: If path is not a branch
-    -Green: If all is correctly in this branch
+    - Branch's name (known as nick).
+    - Absolute path of the branch in your server.
+    - Last reviewer branch.
+    - Revno Branch.
+    - Parent branch that we are getting the pull from.
+
+This information is shown in colors, and each color has a meaning witch is:
+
+    - Blue: If there are changes without commits in the branch
+    - Red: If path is not a branch
+    - Green: If all is correctly in this branch.
+
+.. image:: branch_info/static/src/img/branch_info.png
     """,
 
     "website": "http://www.vauxoo.com/",
