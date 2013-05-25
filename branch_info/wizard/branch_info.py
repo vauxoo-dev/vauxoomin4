@@ -211,6 +211,8 @@ class branch_info_line(osv.osv_memory):
             'views': [(resource_id, 'kanban')],
             'type': 'ir.actions.act_window',
             'context': {'hide_breadcrumb': True, 'stop': True},
+            }
+
     def show_log(self, cr, uid, ids, context=None):
         if context is None:
             context = {}
