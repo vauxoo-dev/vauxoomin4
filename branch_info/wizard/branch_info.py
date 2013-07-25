@@ -100,8 +100,9 @@ class branch_info_line(osv.osv_memory):
                 name = b.nick
                 parent = b.get_parent()
                 revd = b.last_revision_info()[1]
-                st = commands.getoutput('cat /tmp/status') and 'uncommited'\
-                                                               or 'ok'
+                st = commands.getoutput('cat /tmp/status').strip() and \
+                                                                  'uncommited'\
+                                                                       or 'ok'
                 msg = msg + '''\n
                         <tr>
                         <td>%s</td>
