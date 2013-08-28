@@ -51,10 +51,13 @@ class branch_info_line(osv.osv_memory):
     def is_branch(self, cr, uid, ids, path, context=None):
         ''' Check if any path is a branch
             return branch path or False if not a branch'''
-        if context is None:
-            context = {}
+        context = context or {}
+        path = os.path.realpath(path)
         if '.bzr' in os.listdir(path):
             return path
+        elif os.path.islink(path):
+            new = os.readlink(path)
+            return self.is_branch(cr, uid, ids, new)
         else:
             up_level = os.path.dirname(path)
             if '.bzr' in os.listdir(up_level):
