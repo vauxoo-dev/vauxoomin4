@@ -1,0 +1,34 @@
+<openerp>
+   <data>
+
+   <record model='ir.ui.view' id='logserver_form_log'>
+      <field name='name'>Log</field>
+      <field name='model'>info.log.server</field>
+      <field name='arch' type='xml'>
+          <form string='Log' version="7.0">
+                <footer>
+                    <button string="Get Logs"
+                            name="%(action_log_info)s"
+                            type="action"
+                            class="oe_highlight"  />
+                </footer>
+                <field name="name" invisble="1"/>
+        </form>
+     </field>
+    </record>
+
+     <record model='ir.actions.act_window' id='logserver_action'>
+       <field name='name'>branch.info</field>
+       <field name='res_model'>info.log.server</field>
+       <field name='view_type'>form</field>
+       <field name='view_mode'>form</field>
+       <field name='target'>inline</field>
+     </record>
+
+    <menuitem name = 'Log Info' 
+              id='menu_log_info' 
+              sequence='1000' 
+              groups="base.group_erp_manager"
+              action='logserver_action' />
+  </data>
+</openerp>

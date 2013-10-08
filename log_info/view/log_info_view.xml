@@ -1,0 +1,8 @@
+<openerp>
+    <data>
+        <record model="ir.actions.client" id="action_log_info">
+            <field name="name">Log Info</field>
+            <field name="tag">log.info.action</field>
+        </record>
+    </data>
+</openerp>

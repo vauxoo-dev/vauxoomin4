@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:fdl=1:
+-->
+<templates id="template" xml:space="preserve">   
+
+<div t-name="log_info_template" class="form-group">
+    <div class="btn btn-primary">
+        <div class="col-md-2">
+            <ul class="btn btn-primary">
+              <li>
+                <a href="#warnings">
+                Warnings
+                  <span class="badge pull-right">{{ len(warnings) }}</span>
+                </a>
+              </li>
+              <li>
+                <a href="#errors">
+                Errors
+                  <span class="badge pull-right">{{ len(errors) }}</span>
+                </a>
+              </li>
+              <li>
+                <a href="#infos">
+                Infos
+                  <span class="badge pull-right">{{ len(infos) }}</span>
+                </a>
+              </li>
+              <li>
+                <a href="#tests">
+                Tests
+                  <span class="badge pull-right">{{ len(tests) }}</span>
+                </a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div class="btn btn-primary">
+    <div id="warnings" class="list-group">
+        {% for item in warnings %}
+            {% autoescape true %}
+                <a class="list-group-item" href="#">{{ item }}</a>
+            {% endautoescape %}
+        {% endfor %}
+    </div>
+    <div id="infos" class="list-group">
+        {% for item in infos %}
+            {% autoescape true %}
+                <a class="list-group-item" href="#">{{ item }}</a>
+            {% endautoescape %}
+        {% endfor %}
+    </div>
+    <div id="errors" class="list-group">
+        {% for item in errors %}
+            {% autoescape true %}
+                <a class="list-group-item" href="#">{{ item }}</a>
+            {% endautoescape %}
+        {% endfor %}
+    </div>
+    <div id="tests" class="list-group">
+        {% for item in warnings %}
+            {% autoescape true %}
+                <a class="list-group-item" href="#">{{ item }}</a>
+            {% endautoescape %}
+        {% endfor %}
+    </div>
+    </div>
+</div>
+</templates>

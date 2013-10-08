@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:fdl=1:
+-->
+<templates id="template" xml:space="preserve">   
+
+<div t-name="log_info_template" class="btn btn-primary">
+    <div class="col-md-6">
+        <div class="col-md-1">
+            <ul class="nav nav-pills nav-stacked">
+              <li>
+                <a id="war" href="#">
+                Warnings
+                  <span class="badge pull-right">{{ len(warnings) }}</span>
+                </a>
+              </li>
+              <li>
+                <a id="err" href="#">
+                Errors
+                  <span class="badge pull-right">{{ len(errors) }}</span>
+                </a>
+              </li>
+              <li>
+                <a id="in" href="#">
+                Infos
+                  <span class="badge pull-right">{{ len(infos) }}</span>
+                </a>
+              </li>
+              <li>
+                <a id="test" href="#">
+                Tests
+                  <span class="badge pull-right">{{ len(tests) }}</span>
+                </a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div id="warnings" class="warnings">
+        {% for item in warnings %}
+        <div class="list-group">
+            {% autoescape true %}
+                <a class="list-group-item" href="#">{{ item }}</a>
+            {% endautoescape %}
+        </div>
+        {% endfor %}
+    </div>
+    <div id="info" class="info">
+        {% for item in infos %}
+        <div class="list-group">
+            {% autoescape true %}
+                <a class="list-group-item" href="#">{{ item }}</a>
+            {% endautoescape %}
+        </div>
+        {% endfor %}
+    </div>
+    <div id="errors" class="errors">
+        {% for item in errors %}
+        <div class="list-group">
+            {% autoescape true %}
+                <a class="list-group-item" href="#">{{ item }}</a>
+            {% endautoescape %}
+    </div>
+        {% endfor %}
+    </div>
+    <div id="tests" class="tests">
+        {% for item in warnings %}
+        <div class="list-group">
+            {% autoescape true %}
+                <a class="list-group-item" href="#">{{ item }}</a>
+            {% endautoescape %}
+    </div>
+        {% endfor %}
+    </div>
+</div>
+</templates>
