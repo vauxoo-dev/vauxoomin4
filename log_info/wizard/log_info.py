@@ -34,7 +34,7 @@ INFO = '.*INFO '
 ERROR = '.*ERROR '
 WARNING = '.*WARNING '
 PYTHON = '.*File '
-TEST = '.*openerp.tests:'
+TEST = '.*TEST'
 
 class info_log_server(osv.TransientModel):
 

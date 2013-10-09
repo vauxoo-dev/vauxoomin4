@@ -12,7 +12,8 @@ instance.web.client_actions.add('log.info.action', 'instance.log_info_action');
                 }
             }
             if (!nopasa){
-            window.location= window.location.href + '&active_id=999';
+            window.location.href += '&active_id=999';
+            window.location.reload()
             }
             $('#war').on('click',
                         function(eve){

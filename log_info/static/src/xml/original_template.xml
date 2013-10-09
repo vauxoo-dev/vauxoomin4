@@ -62,7 +62,7 @@
         {% endfor %}
     </div>
     <div id="tests" class="tests">
-        {% for item in warnings %}
+        {% for item in tests %}
         <div class="list-group">
             {% autoescape true %}
                 <a class="list-group-item" href="#">{{ item }}</a>
