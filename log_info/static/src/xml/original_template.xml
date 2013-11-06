@@ -19,7 +19,7 @@
                   </li>
                   <li>
                     <a id="err" href="#">
-                    Errors
+                      <span class="pull-right">Errors</span>
                     </a>
                   </li>
                   <li>

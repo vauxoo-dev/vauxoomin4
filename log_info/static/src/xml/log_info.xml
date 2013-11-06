@@ -19,7 +19,7 @@
                   </li>
                   <li>
                     <a id="err" href="#">
-                    Errors
+                      <span class="pull-right">Errors</span>
                     </a>
                   </li>
                   <li>
@@ -31,7 +31,7 @@
                     </a>
                   </li>
                   <li>
-                      <span class="badge navbar-text pull-left">920</span>
+                      <span class="badge navbar-text pull-left">972</span>
                   </li>
                   <li>
                     <a id="test" href="#">
@@ -6564,6 +6564,370 @@
                 <div class="list-group">
                     
                         <a class="list-group-item" href="#">2013-11-06 17:11:08,817 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:08] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:08,871 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:08] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:09,691 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:09] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:09,708 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:09] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:09,735 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:09] &#34;POST /web/action/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:09,987 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:09] &#34;POST /web/action/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:10,027 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:10] &#34;GET /?db=youtube&amp;ts=1383754602399 HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:10,104 7615 INFO ? werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:10] &#34;GET /web/static/src/css/full.css HTTP/1.1&#34; 304 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:10,151 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:10] &#34;GET /web/webclient/css?db=youtube HTTP/1.1&#34; 304 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:10,180 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:10] &#34;GET /web/webclient/js?db=youtube HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:10,551 7615 INFO youtube openerp.service.web_services: successful login from &#39;admin&#39; using database &#39;youtube&#39;
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:10,553 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:10] &#34;POST /web/session/get_session_info HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:10,639 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:10] &#34;POST /web/webclient/qweblist HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:10,920 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:10] &#34;POST /web/proxy/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:11,069 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:11] &#34;POST /web/session/modules HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:11,084 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:11] &#34;POST /web/webclient/translations HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:11,108 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:11] &#34;GET /web/binary/company_logo?session_id=505c0595d5e049d1b198e5e6d129d5cd HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:11,129 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:11] &#34;GET /web/binary/company_logo?session_id=505c0595d5e049d1b198e5e6d129d5cd HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:11,164 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:11] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:11,173 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:11] &#34;POST /web/action/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:11,176 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:11] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:11,185 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:11] &#34;GET /web/binary/image?model=res.users&amp;field=image_small&amp;id=1&amp;session_id=505c0595d5e049d1b198e5e6d129d5cd HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:11,214 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:11] &#34;POST /web/menu/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 17:11:11,698 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 17:11:11] &#34;POST /web/menu/load_needaction HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:22,615 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:22] &#34;POST /web/menu/load_needaction HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:22,620 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:22] &#34;POST /web/action/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:22,859 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:22] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:22,911 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:22] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:23,609 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:23] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:23,624 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:23] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:23,647 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:23] &#34;POST /web/action/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:23,908 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:23] &#34;POST /web/action/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:23,945 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:23] &#34;GET /?db=youtube&amp;ts=1383754602399 HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:24,029 7615 INFO ? werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:24] &#34;GET /web/static/src/css/full.css HTTP/1.1&#34; 304 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:24,085 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:24] &#34;GET /web/webclient/css?db=youtube HTTP/1.1&#34; 304 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:24,111 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:24] &#34;GET /web/webclient/js?db=youtube HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:24,482 7615 INFO youtube openerp.service.web_services: successful login from &#39;admin&#39; using database &#39;youtube&#39;
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:24,484 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:24] &#34;POST /web/session/get_session_info HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:24,587 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:24] &#34;POST /web/webclient/qweblist HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:24,891 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:24] &#34;POST /web/proxy/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:25,014 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:25] &#34;POST /web/session/modules HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:25,024 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:25] &#34;POST /web/webclient/translations HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:25,043 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:25] &#34;GET /web/binary/company_logo?session_id=505c0595d5e049d1b198e5e6d129d5cd HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:25,070 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:25] &#34;GET /web/binary/company_logo?session_id=505c0595d5e049d1b198e5e6d129d5cd HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:25,107 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:25] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:25,110 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:25] &#34;POST /web/action/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:25,113 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:25] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:25,127 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:25] &#34;GET /web/binary/image?model=res.users&amp;field=image_small&amp;id=1&amp;session_id=505c0595d5e049d1b198e5e6d129d5cd HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:25,150 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:25] &#34;POST /web/menu/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:09:25,581 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:09:25] &#34;POST /web/menu/load_needaction HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:11:42,056 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:11:42] &#34;POST /web/menu/load_needaction HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:11:42,063 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:11:42] &#34;POST /web/action/load HTTP/1.1&#34; 200 -
+</a>
+                    
+                </div>
+                
+                <div class="list-group">
+                    
+                        <a class="list-group-item" href="#">2013-11-06 18:11:42,300 7615 INFO youtube werkzeug: 127.0.0.1 - - [06/Nov/2013 18:11:42] &#34;POST /web/dataset/call_kw HTTP/1.1&#34; 200 -
 </a>
                     
                 </div>
