@@ -4,7 +4,6 @@ instance.web.client_actions.add('log.info.action', 'instance.log_info_action');
         template : 'log_info_template',
         start:function(){
             url_split = window.location.href.split('&');
-            console.log(url_split)
             var nopasa = false;
             for (i=0; i <= url_split.length; i++){
                 if (url_split[i] == 'active_id%5B%5D=999'){
@@ -17,18 +16,22 @@ instance.web.client_actions.add('log.info.action', 'instance.log_info_action');
             }
             $('#war').on('click',
                         function(eve){
+                                    console.log('warnings')
                                      $('.showtag').removeClass('showtag')
                                      $('#warnings').addClass('showtag')});
             $('#err').on('click',
                         function(eve){
+                                    console.log('errors')
                                      $('.showtag').removeClass('showtag')
                                      $('#errors').addClass('showtag')});
             $('#in').on('click',
                         function(eve){
+                                    console.log('info')
                                      $('.showtag').removeClass('showtag')
                                      $('#info').addClass('showtag')});
             $('#test').on('click',
                         function(eve){
+                                    console.log('test')
                                      $('.showtag').removeClass('showtag')
                                      $('#tests').addClass('showtag')})
         },

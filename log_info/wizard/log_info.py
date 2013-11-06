@@ -52,7 +52,7 @@ class info_log_server(osv.TransientModel):
         template = templateEnv.get_template( TEMPLATE_FILE )
         outputText = template.render(warnings = Data[3],
             infos = Data[2], pythons = Data[1],
-            tests = Data[3], errors = Data[0])
+            tests = Data[4], errors = Data[0])
         open('%s/static/src/xml/log_info.xml' % module_path, 'w').write(outputText)
         return True
 
@@ -68,13 +68,13 @@ class info_log_server(osv.TransientModel):
         for l in F:
             if re.match(INFO, l):
                 infos.append(unicode(l))
-            if re.match(WARNING, l):
+            elif re.match(WARNING, l):
                 warnings.append(unicode(l))
-            if re.match(TEST, l):
+            elif re.match(TEST, l):
                 tests.append(unicode(l))
-            if re.match(ERROR, l):
+            elif re.match(ERROR, l):
                 errors.append(unicode(l))
-            if re.match(PYTHON, l):
+            elif re.match(PYTHON, l):
                 Text = l
                 for k in F:
                     if re.match(PYTHON, k):
@@ -91,8 +91,12 @@ class info_log_server(osv.TransientModel):
             context = {}
         res = super(info_log_server, self).default_get(cr, uid, fields, context=context)
         log_file = openerp.tools.config.options.get('logfile',False)
-        result = self.Parselog(log_file)
-        self.RenderThings(result)
+        if log_file:
+            result = self.Parselog(log_file)
+            self.RenderThings(result)
+        else:
+            print 'algo'
+
         
         return res
 
