@@ -96,7 +96,8 @@ class info_log_server(osv.TransientModel):
             self.RenderThings(result)
         else:
             raise osv.except_osv(_('Warning!'),
-                                 _('You need a log file setting in the server config file'))
+                                 _('You need a log file setting in the server config file please '
+                                   'configure it and try again'))
         
         return res
 
