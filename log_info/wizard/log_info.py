@@ -95,8 +95,8 @@ class info_log_server(osv.TransientModel):
             result = self.Parselog(log_file)
             self.RenderThings(result)
         else:
-            print 'algo'
-
+            raise osv.except_osv(_('Warning!'),
+                                 _('You need a log file setting in the server config file'))
         
         return res
 
