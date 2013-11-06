@@ -37,6 +37,14 @@
                   <li>
                       <span class="badge navbar-text ">{{ len(tests) }}</span>
                   </li>
+                  <li>
+                    <a id="all" data-toggle="tab" href="#all">
+                      <span >All</span>
+                    </a>
+                  </li>
+                  <li>
+                      <span class="badge navbar-text ">{{ len(tests) + len(infos) + len(errors) + len(warnings) }}</span>
+                  </li>
                 </ul>
         <div class="tab-content">
             <div id="warnings" class="tab-pane active">

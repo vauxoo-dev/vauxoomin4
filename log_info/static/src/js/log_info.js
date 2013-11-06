@@ -38,6 +38,10 @@ instance.web.client_actions.add('log.info.action', 'instance.log_info_action');
                  e.preventDefault()
                  $(this).tab('show')
            })
+            $('#all').on('click',
+                        function(eve){
+                            $('.tab-content div').addClass('active')
+                                    })
         },
             });
 };
