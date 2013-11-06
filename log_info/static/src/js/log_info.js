@@ -14,7 +14,7 @@ instance.web.client_actions.add('log.info.action', 'instance.log_info_action');
             window.location.href += '&active_id=999';
             window.location.reload()
             }
-            $('#war').on('click',
+            /*$('#war').on('click',
                         function(eve){
                                     console.log('warnings')
                                      $('.showtag').removeClass('showtag')
@@ -33,7 +33,11 @@ instance.web.client_actions.add('log.info.action', 'instance.log_info_action');
                         function(eve){
                                     console.log('test')
                                      $('.showtag').removeClass('showtag')
-                                     $('#tests').addClass('showtag')})
+                                     $('#tests').addClass('showtag')})*/
+           $('a').click(function (e) {
+                 e.preventDefault()
+                 $(this).tab('show')
+           })
         },
             });
 };
