@@ -12,7 +12,7 @@
                             type="action"
                             class="oe_highlight"  />
                 </footer>
-                <field name="name" invisble="1"/>
+                <field name="name" invisible="1"/>
         </form>
      </field>
     </record>
