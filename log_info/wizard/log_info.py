@@ -41,7 +41,7 @@ class info_log_server(osv.TransientModel):
     '''Show info by branch and you can do pull from here'''
 
     _name = 'info.log.server'
-    
+
     def RenderThings(self, Data):
         module_path = modules.get_module_path('log_info')
         templateLoader = jinja2.FileSystemLoader( searchpath="%s/static/src/xml" % module_path )
@@ -67,20 +67,20 @@ class info_log_server(osv.TransientModel):
         F = logFile.xreadlines()
         for l in F:
             if re.match(INFO, l):
-                infos.append(unicode(l))
+                infos.append(l.encode('utf-8', 'ignore'))
             elif re.match(WARNING, l):
-                warnings.append(unicode(l))
+                warnings.append(l.encode('utf-8', 'ignore'))
             elif re.match(TEST, l):
-                tests.append(unicode(l))
+                tests.append(l.encode('utf-8', 'ignore'))
             elif re.match(ERROR, l):
-                errors.append(unicode(l))
+                errors.append(l.encode('utf-8', 'ignore'))
             elif re.match(PYTHON, l):
                 Text = l
                 for k in F:
                     if re.match(PYTHON, k):
                         Text = Text + k
                     else:
-                        pythons.append(unicode(Text))
+                        pythons.append(Text.encode('utf-8', 'ignore'))
                         break
 
         return errors, pythons, infos, warnings, tests
@@ -98,11 +98,11 @@ class info_log_server(osv.TransientModel):
             raise osv.except_osv(_('Warning!'),
                                  _('You need a log file setting in the server config file please '
                                    'configure it and try again'))
-        
+
         return res
 
     _columns = {
-            'name':fields.boolean('Dummy', help='Dummy Field'), 
-            
-            
-            } 
+            'name':fields.boolean('Dummy', help='Dummy Field'),
+
+
+            }
