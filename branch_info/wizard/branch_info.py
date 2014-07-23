@@ -45,9 +45,9 @@ class branch_info_line(osv.osv_memory):
         res = {}
         for line in self.browse(cr, uid, ids, context=context):
             res.update({line.id:color.get(line.st,0)})
-        
+
         return res
-    
+
     def is_branch(self, cr, uid, ids, path, context=None):
         ''' Check if any path is a branch
             return branch path or False if not a branch'''
@@ -74,7 +74,7 @@ class branch_info_line(osv.osv_memory):
         addons_path = openerp.conf.addons_paths
         line_ids = self.search(cr, uid, [], context=context)
         line_ids and self.unlink(cr, uid, line_ids, context=context)
-        
+
         msg = '''
         <table border border="1">
 
@@ -188,14 +188,14 @@ class branch_info_line(osv.osv_memory):
         'st':fields.selection([('ok','Commited'),('notb','Not Branch'),
                                ('uncommited','Uncommited')],
                                help='True if this branch have diff '
-                             'without commiter'), 
+                             'without commiter'),
         'color':fields.function(_get_color, method=True,
                                 string='Color',type='integer',
-                                help='Color used in kanban view'), 
+                                help='Color used in kanban view'),
 
     }
-    
-    
+
+
 
     def back_windows(self, cr, uid, ids, context=None):
         if context is None:
@@ -250,6 +250,20 @@ class branch_info_line(osv.osv_memory):
         }
 
 
+
+    def get_module_data(self, cr, uid, module, context=None):
+        context = context or {}
+        module_obj = self.pool.get('ir.module.module')
+        module_ids = module_obj.search(cr, uid, [('name', '=', module)],
+                                       context=context)
+        if module_ids:
+            return module_ids[0]
+
+        return False
+
+
+
+
     def show_modules(self, cr, uid, ids, context=None):
         if context is None:
             context = {}
@@ -257,28 +271,22 @@ class branch_info_line(osv.osv_memory):
         b = False
         w = False
         line_brw = ids and self.browse(cr, uid, ids[0], context=context)
-        res = {
-            'logs': '\n'.join([i for i in os.listdir(line_brw.path)\
-                                if not i.startswith('.') and \
-                                    os.path.isdir('%s/%s' %\
-                                                         (line_brw.path, i))]),
-        }
-        res_ids = self.create(cr, uid, res)
+        module_ids = [self.get_module_data(cr, uid, i, context) \
+                                   for i in os.listdir(line_brw.path)\
+                                    if not i.startswith('.') and \
+                                        os.path.isdir('%s/%s' %\
+                                                         (line_brw.path, i))]
         obj_model = self.pool.get('ir.model.data')
-        model_data_ids = obj_model.search(
-            cr, uid, [('model', '=', 'ir.ui.view'),
-                      ('name', '=', 'branchinfo_form_log')])
-        resource_id = obj_model.read(cr, uid,
-                                     model_data_ids,
-                                     fields=['res_id'])[0]['res_id']
+        model_data_brw = obj_model.get_object(cr, uid, 'base', 'module_tree')
+
         return {
             'view_type': 'form',
-            'view_mode': 'form',
-            'res_model': 'branch.info.line',
-            'views': [(resource_id, 'form')],
+            'view_mode': 'tree,form',
+            'target':'new',
+            'res_model': 'ir.module.module',
             'type': 'ir.actions.act_window',
-            'target': 'inline',
-            'res_id': res_ids,
+            'res_id': module_ids,
+            'domain': [('id', 'in', module_ids)],
             'context': context,
         }
 
@@ -292,7 +300,7 @@ class branch_info_line(osv.osv_memory):
         b = False
         w = False
         lines = []
-        
+
         line_brw = ids and self.browse(cr, uid, ids[0], context=context)
         try:
             r = repository.Repository.open(line_brw and line_brw.path)
