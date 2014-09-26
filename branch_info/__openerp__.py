@@ -23,12 +23,11 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
 {
-    "name": "Branch Info",
-    "version": "1.0",
-    "author": "Vauxoo",
-    "category": "Tecnhical Features",
+    "name": "Branch Info", 
+    "version": "1.0", 
+    "author": "Vauxoo", 
+    "category": "Tecnhical Features", 
     "description": """
 VauxooMin4 Tools.
 =================
@@ -68,16 +67,23 @@ This information is shown in colors, and each color has a meaning which is:
 .. image:: branch_info/static/src/img/branch_info.png
 
 TODO: may be add git support?
-    """,
-
-    "website": "http://www.vauxoo.com/",
-    "license": "AGPL-3",
-    "depends": ["base"],
-    "demo": [],
-    "css": ["static/src/css/*.css"],
+    """, 
+    "website": "http://www.vauxoo.com/", 
+    "license": "AGPL-3", 
+    "depends": [
+        "base"
+    ], 
+    "demo": [], 
     "data": [
-        'wizard/branch_info_view.xml',
-    ],
-    "installable": True,
-    "active": False,
+        "wizard/branch_info_view.xml"
+    ], 
+    "test": [], 
+    "js": [], 
+    "css": [
+        "static/src/css/*.css"
+    ], 
+    "qweb": [], 
+    "installable": True, 
+    "auto_install": False
 }
+#vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
