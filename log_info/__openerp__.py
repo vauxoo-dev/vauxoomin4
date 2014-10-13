@@ -19,36 +19,36 @@
 #
 ##############################################################################
 {
-    "name": "Server Log Info", 
-    "version": "0.1", 
-    "author": "Vauxoo", 
-    "category": "", 
-    "description": """                                                            
-                                                                                   
-""", 
-    "website": "http://www.vauxoo.com", 
-    "license": "", 
+    "name": "Server Log Info",
+    "version": "0.1",
+    "author": "Vauxoo",
+    "category": "",
+    "description": """
+
+
+""",
+    "website": "http://www.vauxoo.com",
+    "license": "",
     "depends": [
-        "web_bootstrap3", 
+        "web_bootstrap3",
         "web_fontawesome"
-    ], 
-    "demo": [], 
+    ],
+    "demo": [],
     "data": [
-        "view/log_info_view.xml", 
+        "view/log_info_view.xml",
         "wizard/log_info_view.xml"
-    ], 
-    "test": [], 
+    ],
+    "test": [],
     "js": [
         "static/src/js/log_info.js"
-    ], 
+    ],
     "css": [
         "static/src/css/log_info.css"
-    ], 
+    ],
     "qweb": [
         "static/src/xml/log_info.xml"
-    ], 
-    "installable": True, 
+    ],
+    "installable": True,
     "auto_install": False
 }
-
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
