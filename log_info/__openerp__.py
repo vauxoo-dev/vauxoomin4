@@ -26,7 +26,7 @@
     "description": """
 
 
-""",
+    """,
     "website": "http://www.vauxoo.com",
     "license": "",
     "depends": [

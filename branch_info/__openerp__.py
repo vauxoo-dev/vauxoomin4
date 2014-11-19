@@ -68,7 +68,7 @@ This information is shown in colors, and each color has a meaning which is:
 
 TODO: may be add git support?
 
-""",
+    """,
     "website": "http://www.vauxoo.com/",
     "license": "AGPL-3",
     "depends": [
